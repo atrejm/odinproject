@@ -1,0 +1,8 @@
+.group1 + div ::before{
+    font-style: italic;
+    content: '😎🤓';
+}
+
+.group1 + div ::after {
+    content: '🤓😎';
+}

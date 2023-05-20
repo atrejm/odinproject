@@ -1,0 +1,10 @@
+button {
+    background-color: rgb(158, 158, 219);
+    width: 100px;
+    height: 100px;
+    font-size: xx-large;
+}
+
+tr {
+    border: 1cm;
+}

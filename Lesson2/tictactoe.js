@@ -86,6 +86,61 @@ const gameboard = (() => {
         id = id.toString()
         board[id[0]][id[1]] = tick
         display()
+        if(checkwincondition(tick)) { alertwinner(tick) }
+    }
+
+    let checkwincondition = (tick) => {
+        const magicSquare = [
+            [4,9,2],         
+            [3,5,7],
+            [8,1,6],
+            ];
+
+        var msc = magicSquare.map(function(arr) {
+            return arr.slice();
+        });
+
+        
+        for (let i = 0; i < board.length; i++) {
+            
+            for (let j = 0; j < board[i].length; j++) {
+                msc[i][j] = 0
+
+                if (board[i][j] == tick) {
+                    console.log(i, j)
+                    msc[i][j] = magicSquare[i][j]
+                }
+            }
+        }
+
+        if ((msc[0][0] + msc[0][1] + msc[0][2]) == 15) {
+            return true
+        }
+        if ((msc[1][0] + msc[1][1] + msc[1][2]) == 15) {
+            return true
+        }
+        if ((msc[2][0] + msc[2][1] + msc[2][2]) == 15) {
+            return true
+        }
+        if ((msc[0][0] + msc[1][0] + msc[2][0]) == 15) {
+            return true
+        }
+        if ((msc[0][1] + msc[1][1] + msc[2][1]) == 15) {
+            return true
+        }if ((msc[0][2] + msc[1][2] + msc[2][2]) == 15) {
+            return true
+        }
+        if ((msc[0][0] + msc[1][1] + msc[2][2]) == 15) {
+            return true
+        }
+        if ((msc[2][0] + msc[1][1] + msc[0][2]) == 15) {
+            return true
+        }
+        return false
+    }
+
+    let alertwinner = (tick) => {
+        alert (tick + " won!")
     }
 
     return {display, addX, addO, update}
